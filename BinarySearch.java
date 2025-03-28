@@ -39,9 +39,13 @@ public final class BinarySearch {
      * @param args unused.
      */
     public static void main(final String[] args) {
+        // create random number generator
         Random rand = new Random();
+        // create array of ints
         int[] arrayOfInts = new int[ARRAYSIZE];
+        // Creates scanner object
         Scanner scanner = new Scanner(System.in);
+        // initialize search variable
         String search;
         do {
             // populate array with random numbers
@@ -56,18 +60,22 @@ public final class BinarySearch {
             System.out.println(Arrays.toString(arrayOfInts));
             System.out.print("Enter a number to search for, ");
             System.out.println("or q to quit: ");
+            // get user input
             search = scanner.nextLine().toLowerCase();
-
+            // check if user wants to quit
             if (search.equals("q")) {
                 break;
             } else {
+                // check if input is a number
                 try {
                     int searchInt = Integer.parseInt(search);
+                    // binary search
                     int low = 0;
                     int high = arrayOfInts.length - 1;
                     while (low <= high) {
                         int mid = (low + high) / 2;
                         if (arrayOfInts[mid] == searchInt) {
+                            // print index of number
                             System.out.println("Number found at index: " + mid);
                             break;
                         } else if (arrayOfInts[mid] < searchInt) {
@@ -81,6 +89,7 @@ public final class BinarySearch {
                         System.out.println("Number not found in the array.");
                     }
                 } catch (NumberFormatException ex) {
+                    // Catch exception if input is not a number
                     System.out.println("Invalid input. Enter a number.");
                 }
             }
